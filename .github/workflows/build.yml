@@ -1,4 +1,4 @@
-name: Build SubGHz Toolkit App
+name: Build SubGHz Toolkit Apps
 
 on:
   push:
@@ -17,8 +17,9 @@ jobs:
         with:
           sdk-channel: release
 
-      - name: Upload compiled app
+      - name: Upload all faps
         uses: actions/upload-artifact@v4
         with:
-          name: SubGHz-Toolkit.fap
-          path: "*.fap"
+          name: SubGHz-Toolkit-apps
+          path: |
+            **/*.fap
