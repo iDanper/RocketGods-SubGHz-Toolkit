@@ -1,0 +1,24 @@
+name: Build SubGHz Toolkit App
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build with ufbt
+        uses: flipperdevices/flipperzero-ufbt-action@v0.1
+        with:
+          sdk-channel: release
+
+      - name: Upload compiled app
+        uses: actions/upload-artifact@v4
+        with:
+          name: SubGHz-Toolkit.fap
+          path: "*.fap"
